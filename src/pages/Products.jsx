@@ -11,6 +11,10 @@ function Products({ products, changeFilters }) {
     }));
   };
 
+  if (!products) {
+    return <p className="text-center text-lg font-semibold">Cargando...</p>;
+  }
+
   return (
     <div className="products-container container mx-auto mt-8 p-6 rounded-lg shadow-lg">
       <h1 className="text-3xl font-bold mb-4">Catálogo de Productos</h1>
