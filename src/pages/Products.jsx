@@ -1,22 +1,16 @@
 import { useCart } from "../context/CartContext";
 import { useState } from "react";
 
-function Products({ products, changeFilters }) {
+function Products({ filteredProducts, changeFilters }) {
   const { addToCart } = useCart();
-  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
-    setSelectedCategory(value);
     changeFilters((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
-
-  const filteredProducts = selectedCategory === "all"
-    ? products
-    : products.filter((product) => product.category.toLowerCase() === selectedCategory);
 
   return (
     <div className="products-container container mx-auto mt-8 p-6 rounded-lg shadow-lg">
@@ -54,18 +48,36 @@ function Products({ products, changeFilters }) {
       <div className="products-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 p-4 rounded-lg shadow-md">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
-            <div key={product.id} className="product-card bg-white dark:bg-dark-card p-4 rounded-lg shadow-md">
-              <img src={product.image_url} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{product.name}</h3>
-              <p className="text-gray-600 dark:text-gray-400">{product.description}</p>
-              <p className="text-gray-600 dark:text-gray-300">${product.price}</p>
-              <button className="bg-primary dark:bg-dark-primary text-white px-4 py-2 mt-1 rounded-md hover:bg-opacity-80" onClick={() => addToCart(product)}>
+            <div
+              key={product.id}
+              className="product-card bg-white dark:bg-dark-card p-4 rounded-lg shadow-md"
+            >
+              <img
+                src={product.image_url}
+                alt={product.name}
+                className="w-full h-48 object-cover mb-4 rounded-lg"
+              />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                {product.name}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                {product.description}
+              </p>
+              <p className="text-gray-600 dark:text-gray-300">
+                ${product.price}
+              </p>
+              <button
+                className="bg-primary dark:bg-dark-primary text-white px-4 py-2 mt-1 rounded-md hover:bg-opacity-80"
+                onClick={() => addToCart(product)}
+              >
                 Agregar al carrito
               </button>
             </div>
           ))
         ) : (
-          <p className="text-gray-500 dark:text-gray-300 text-center col-span-3">No hay productos en esta categoría.</p>
+          <p className="text-gray-500 dark:text-gray-300 text-center col-span-3">
+            No hay productos en esta categoría.
+          </p>
         )}
       </div>
     </div>
