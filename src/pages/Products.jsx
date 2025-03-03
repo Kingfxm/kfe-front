@@ -1,6 +1,6 @@
 import { useCart } from "../context/CartContext";
 
-function Products({ filteredProducts, changeFilters }) {
+function Products({ products, changeFilters }) {
   const { addToCart } = useCart();
 
   const handleFilterChange = (event) => {
@@ -45,8 +45,8 @@ function Products({ filteredProducts, changeFilters }) {
         </div>
       </div>
       <div className="products-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 p-4 rounded-lg shadow-md">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
+        {products.length > 0 ? (
+          products.map((product) => (
             <div
               key={product.id}
               className="product-card bg-white dark:bg-dark-card p-4 rounded-lg shadow-md"
