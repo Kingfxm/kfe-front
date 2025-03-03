@@ -1,5 +1,4 @@
 import { useCart } from "../context/CartContext";
-import { useState } from "react";
 
 function Products({ filteredProducts, changeFilters }) {
   const { addToCart } = useCart();
