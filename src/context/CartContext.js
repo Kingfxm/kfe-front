@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 const CartContext = createContext();
 
@@ -39,6 +39,7 @@ export function CartProvider({ children }) {
         )
         .filter((item) => item.quantity > 0)
     );
+    toast.success("Producto eliminado del carrito");
   };
 
   const clearCart = () => {
