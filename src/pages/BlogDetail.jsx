@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Toaster, toast } from "sonner";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -13,11 +14,15 @@ function BlogDetail() {
     axios
       .get(`${API_URL}/api/blog/${id}`)
       .then((response) => setBlog(response.data))
-      .catch((error) => console.error("Error al obtener el blog:", error));
+      .catch((error) => toast.error("Error al obtener el blog:", error));
   }, [id]);
 
   if (!blog) {
-    return <p className="text-center text-lg font-semibold dark:text-white">Cargando...</p>;
+    return (
+      <p className="text-center text-lg font-semibold dark:text-white">
+        Cargando...
+      </p>
+    );
   }
 
   return (
@@ -26,7 +31,8 @@ function BlogDetail() {
         {blog.title}
       </h1>
       <p className="text-sm text-border dark:text-gray-300 text-center mb-4">
-        Por {blog.author} | Publicado el {new Date(blog.publication_date).toLocaleDateString()}
+        Por {blog.author} | Publicado el{" "}
+        {new Date(blog.publication_date).toLocaleDateString()}
       </p>
       {blog.image_url && (
         <div className="w-full bg-card-bg dark:bg-card-bg p-4 rounded-lg shadow-md">

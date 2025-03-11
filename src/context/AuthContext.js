@@ -1,11 +1,14 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { Toaster, toast } from "sonner";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem("user")) || null);
+  const [user, setUser] = useState(
+    () => JSON.parse(localStorage.getItem("user")) || null
+  );
   const [token, setToken] = useState(() => localStorage.getItem("token") || "");
 
   useEffect(() => {
@@ -15,14 +18,17 @@ export function AuthProvider({ children }) {
 
   const login = async (credentials) => {
     try {
-      const response = await axios.post(`${API_URL}/api/auth/login`, credentials);
+      const response = await axios.post(
+        `${API_URL}/api/auth/login`,
+        credentials
+      );
       setToken(response.data.token);
       setUser(response.data.user);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
     } catch (error) {
       console.error("Error en el inicio de sesión:", error);
-      throw error;
+      toast.error(error.message);
     }
   };
 
@@ -31,6 +37,7 @@ export function AuthProvider({ children }) {
     setUser(null);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    toast.success("Sesión cerrada");
   };
 
   return (

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { Toaster, toast } from "sonner";
 
 const CartContext = createContext();
 
@@ -25,6 +26,7 @@ export function CartProvider({ children }) {
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
+    toast.success("Producto agregado al carrito");
   };
 
   const removeFromCart = (productId) => {
@@ -41,10 +43,13 @@ export function CartProvider({ children }) {
 
   const clearCart = () => {
     setCart([]);
+    toast.success("Compra finalizada");
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
