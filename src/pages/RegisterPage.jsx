@@ -99,7 +99,7 @@ function RegisterPage() {
             <p className="text-sm text-text dark:text-dark-text">
               ¿Ya tienes cuenta?{" "}
               <a
-                href="/login"
+                href="/register"
                 onClick={() => navigate("/login")}
                 className="text-primary dark:text-dark-primary hover:underline"
               >
