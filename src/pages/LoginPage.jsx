@@ -20,6 +20,7 @@ function LoginPage() {
       const response = await axios.post(`${API_URL}/api/auth/login`, data);
       localStorage.setItem("token", response.data.token);
       navigate("/");
+      toast.success("Inicio de sesión exitoso");
     } catch (err) {
       setError(err.response?.data?.message || "Error al iniciar sesión");
       toast.error(error.message);

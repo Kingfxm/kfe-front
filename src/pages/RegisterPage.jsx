@@ -23,6 +23,7 @@ function RegisterPage() {
         password: data.password,
       });
       navigate("/login");
+      toast.success("Usuario registrado con éxito.");
     } catch (err) {
       setError(err.response?.data?.message || "Error al registrar usuario");
       toast.error(error.message);
