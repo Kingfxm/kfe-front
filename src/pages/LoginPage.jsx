@@ -81,10 +81,7 @@ function LoginPage() {
           </form>
           <div className="mt-6 text-center">
             <p className="text-sm text-text dark:text-dark-text">
-              ¿No tienes cuenta?{" "}
-              <li>
-                <Link to="/register">Registrarse</Link>
-              </li>
+              ¿No tienes cuenta? <Link to="/register">Registrarse</Link>
             </p>
           </div>
         </div>

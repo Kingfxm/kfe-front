@@ -98,10 +98,7 @@ function RegisterPage() {
           </form>
           <div className="mt-6 text-center">
             <p className="text-sm text-text dark:text-dark-text">
-              ¿Ya tienes cuenta?{" "}
-              <li>
-                <Link to="/login">Iniciar Sesión</Link>
-              </li>
+              ¿Ya tienes cuenta? <Link to="/login">Iniciar Sesión</Link>
             </p>
           </div>
         </div>
