@@ -16,6 +16,7 @@ import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import NotFound from "./pages/404";
 
 const API_URL =
   process.env.REACT_APP_API_URL ||
@@ -109,6 +110,7 @@ function App() {
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/profile" element={<Profile />} />
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
               <Footer />
