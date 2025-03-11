@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
+import { Link } from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -81,13 +82,9 @@ function LoginPage() {
           <div className="mt-6 text-center">
             <p className="text-sm text-text dark:text-dark-text">
               ¿No tienes cuenta?{" "}
-              <a
-                href="/login"
-                onClick={() => navigate("/register")}
-                className="text-primary dark:text-dark-primary hover:underline"
-              >
-                Regístrate
-              </a>
+              <li>
+                <Link to="/register">Registrarse</Link>
+              </li>
             </p>
           </div>
         </div>
