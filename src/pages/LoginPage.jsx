@@ -80,7 +80,7 @@ function LoginPage() {
             </button>
           </form>
           <div className="mt-6 text-center">
-            <p className="text-sm text-text dark:text-dark-text">
+            <p className="text-sm text-text text-red-500">
               ¿No tienes cuenta? <Link to="/register">Registrarse</Link>
             </p>
           </div>

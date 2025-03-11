@@ -97,7 +97,7 @@ function RegisterPage() {
             </button>
           </form>
           <div className="mt-6 text-center">
-            <p className="text-sm text-text dark:text-dark-text">
+            <p className="text-sm text-text text-red-500">
               ¿Ya tienes cuenta? <Link to="/login">Iniciar Sesión</Link>
             </p>
           </div>
