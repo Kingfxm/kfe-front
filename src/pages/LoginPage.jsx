@@ -82,7 +82,7 @@ function LoginPage() {
             <p className="text-sm text-text dark:text-dark-text">
               ¿No tienes cuenta?{" "}
               <a
-                href="#"
+                href="/register"
                 onClick={() => navigate("/register")}
                 className="text-primary dark:text-dark-primary hover:underline"
               >
